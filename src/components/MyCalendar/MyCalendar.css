@@ -1,0 +1,4 @@
+@import "react-big-calendar/lib/addons/dragAndDrop/styles";
+.myCustomHeight {
+	height: 95vh;
+}
