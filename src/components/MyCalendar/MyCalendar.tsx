@@ -3,7 +3,7 @@ import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
-import "./MyCalendar.css";
+import "./MyCalendar.scss";
 dayjs.extend(timezone);
 const localizer = dayjsLocalizer(dayjs);
 const DnDCalendar = withDragAndDrop(Calendar);
@@ -37,6 +37,24 @@ function MyCalendar() {
 			resizable: true,
 			isDraggable: true,
 		},
+		{
+			id: 4,
+			title: "Consulta Cuantica",
+			start: new Date(2024, 5, 30, 14, 30, 0), // 30 de junio de 2024, 2:30 PM
+			end: new Date(2024, 5, 30, 15, 30, 0), // 30 de junio de 2024, 3:30 PM
+			allDay: false,
+			resizable: true,
+			isDraggable: true,
+		},
+		{
+			id: 5,
+			title: "Consulta Pernica",
+			start: new Date(2024, 5, 30, 14, 30, 0), // 30 de junio de 2024, 2:30 PM
+			end: new Date(2024, 5, 30, 15, 30, 0), // 30 de junio de 2024, 3:30 PM
+			allDay: false,
+			resizable: true,
+			isDraggable: true,
+		},
 	]);
 
 	const onEventDrop = ({ event, start, end, allDay }) => {
@@ -60,19 +78,21 @@ function MyCalendar() {
 	};
 
 	return (
-		<div className="myCustomHeight">
+		<div className="calendarHeight">
 			<DnDCalendar
 				localizer={localizer}
 				events={events}
 				startAccessor="start"
 				endAccessor="end"
 				allDayAccessor="allDay"
-				draggableAccessor={(event) => true}
+				draggableAccessor={() => true}
 				resizableAccessor={(event) => event.resizable}
 				onEventDrop={onEventDrop}
 				onEventResize={onEventResize}
 				onDragStart={onDragStart}
 				resizable
+				step={5}
+				timeslots={5}
 			/>
 		</div>
 	);
